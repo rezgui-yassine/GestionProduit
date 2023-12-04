@@ -1,0 +1,41 @@
+<h2 style="text-align: center;">Recherche de produits</h2>
+
+<div class="container p-5">
+    <form class="d-flex" role="search">
+        <input class="form-control" type="text" placeholder="Recherche Produit" [(ngModel)]="searchTerm" (keyup)="search()"   name="searchTerm" >
+       
+
+    <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    
+    <table  class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">nom</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Quantite</th>
+            <th scope="col">image</th>
+            <th>update</th>
+    <th>supprimer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of table | filter: searchTerm">
+            <th>{{prod.id}}</th>
+            <td>{{prod.nom}}</td>
+            <td>{{prod.price}}</td>
+            <td>{{prod.Quantite}}</td>
+            <td><img [src]="prod.image" alt="Image du produit" height="50"></td>
+            <td class="task">       
+              <button class="edit" style="visibility: visible;" (click)="onUpdate(prod.id)" ><i class="fa-solid fa-pen-to-square"></i></button>
+            </td>
+            <td class="task">
+              <button class="delete"  (click)="ondelete(prod.id)"><i class="fa-solid fa-trash"></i></button>
+            </td>
+           
+          </tr>
+         
+        </tbody>
+      </table>
+  </div>

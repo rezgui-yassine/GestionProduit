@@ -1,0 +1,57 @@
+
+<div class="container">
+    <h2 style="text-align: center;">Modifier un produit</h2>
+    <form [formGroup]="forminput" >
+      <div class="form-group">
+        <label for="name">Nom du produit :</label>
+        <input type="text" id="name" name="name" class="form-control"  placeholder="Entre Nom produit" formControlName="Nom">
+        <div class="alert alert-danger" role="alert"  *ngIf="!forminput.pristine && forminput.controls['Nom'].errors?.['required']">
+       le Nom de produit est un champs obligatoire !!
+        </div>
+        <div class="alert alert-danger" role="alert"  *ngIf="forminput.controls['Nom']?.errors?.['minlength']">
+          Le nom doit comporter au moins quatre caractères.        </div>
+        <div class="alert alert-danger" role="alert"  *ngIf="forminput.controls['Nom']?.errors?.['maxlength']">
+          Le nom ne peut pas dépasser quatre caractères.        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Prix :</label>
+        <input type="text" id="price" name="price" class="form-control" placeholder="Entre Prix" formControlName="price" >
+        <div class="alert alert-danger" role="alert"   *ngIf="!forminput.pristine &&forminput.controls['price'].errors?.['pattern']">
+          le Prix de produit est un Numbre  !!
+           </div>
+      </div>
+      <div class="form-group">
+        <label for="name" >Quantité :</label>
+        <div class="add flex1">
+            
+        <span (click)="onclicksubstract()"   value="Incrimenter" >-</span>
+        
+        <label id="labelnumb"  >{{valCount}}</label>
+        
+        <span (click)="onclickIncrement()"   value="Incrimenter">+</span>
+        
+        </div>
+      </div>
+      
+<figure class="image-container">
+  <img id="chosen-image">
+  <figcaption id="file-name"></figcaption>
+</figure>
+
+<input type="file" (change)="onImageSelected($event)" id="upload-button" accept=".jpg,.jpeg,.png" formControlName="image" />
+<img [src]="imageUrl"  id="chosen-image" />
+
+<label for="upload-button" id="labelphoto">
+<img src="../../assets/icon/telecharger.png" alt="" id="imguplod"> &nbsp; Choisissez une photo
+</label>
+<div class="alert alert-danger" role="alert" *ngIf="imageRequiredError">
+le image de produit est  obligatoire !!
+ </div>
+
+<button type="submit" class="btn btn-primary"  (click)="onupdate()">update</button> 
+    </form>
+ 
+
+
+</div>
+

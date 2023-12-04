@@ -1,0 +1,17 @@
+.task button {
+    color: #ffffff;
+    padding: 0.8em 0;
+    width: 2.8em;
+    border-radius: 0.3em;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.delete {
+    background-color: #fb3b3b;
+}
+.edit {
+    background-color: #0b87ff;
+    margin-left: auto;
+    margin-right: 3em;
+}
